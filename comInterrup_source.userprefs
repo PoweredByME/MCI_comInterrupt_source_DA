@@ -1,0 +1,12 @@
+﻿<Properties StartupItem="comInterrup_source/comInterrup_source.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="comInterrup_source/Program.cs">
+    <Files>
+      <File FileName="comInterrup_source/Program.cs" Line="166" Column="30" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
