@@ -20,7 +20,7 @@ namespace comInterpt
 	{
 
 		const string webPort = "3333";
-		const string Prefix = "http://+:"+webPort+"/";
+		const string Prefix = "http://localhost:"+webPort+"/";
 		/// <summary>
 		/// This is the function which gets called when the data is recieved by the 
 		/// desktop API
@@ -31,13 +31,15 @@ namespace comInterpt
 		/// <param name="u">The u coordinate.</param>
 		/// <param name="v">The v coordinate.</param>
 		/// <param name="w">The w coordinate.</param>
-		public static void onRecieveCtrlData(int x, int y, int z, int u, int v, int w){
+		public static void onRecieveCtrlData(int x, int y, int z, int u, int v, int w, int LP, int RP){   // LP = left pressure, RP = right pressure
 			Console.WriteLine ("X = " + x.ToString ());
 			Console.WriteLine ("Y = " + y.ToString ());
 			Console.WriteLine ("Z = " + z.ToString ());
 			Console.WriteLine ("U = " + u.ToString ());
 			Console.WriteLine ("V = " + v.ToString ());
 			Console.WriteLine ("W = " + w.ToString ());
+			Console.WriteLine ("LP = " + LP.ToString ());
+			Console.WriteLine ("RP = " + RP.ToString ());
 		}
 
 
@@ -96,9 +98,10 @@ namespace comInterpt
 				using (var reader = new StreamReader(request.InputStream,request.ContentEncoding))
 				{
 					text = reader.ReadToEnd();
+					Console.WriteLine(text);
 					if(text.Contains(",")){
 						var tarr = text.Split (",".ToCharArray());
-						if(tarr.Length == 6){
+						if(tarr.Length == 8){
 							onRecieveCtrlData(
 								
 								int.Parse(tarr[0]),
@@ -106,7 +109,9 @@ namespace comInterpt
 								int.Parse(tarr[2]),
 								int.Parse(tarr[3]),
 								int.Parse(tarr[4]),
-								int.Parse(tarr[5])
+								int.Parse(tarr[5]),
+								int.Parse(tarr[6]),
+								int.Parse(tarr[7])
 							);
 						}
 					}

@@ -1,12 +1,14 @@
-﻿<Properties StartupItem="comInterrup_source/comInterrup_source.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+﻿<Properties StartupConfiguration="{42A8309B-86DB-4039-9990-30D06F3C52FD}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="comInterrup_source/Program.cs">
     <Files>
-      <File FileName="comInterrup_source/Program.cs" Line="166" Column="30" />
+      <File FileName="comInterrup_source/Program.cs" Line="104" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.comInterrup__source PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
 </Properties>

@@ -3,3 +3,5 @@
 /Users/apple/Projects/comInterrup_source/comInterrup_source/bin/Release/comInterrup_source.exe
 /Users/apple/Projects/comInterrup_source/comInterrup_source/obj/x86/Release/comInterrup_source.exe
 /Users/apple/Projects/comInterrup_source/comInterrup_source/obj/x86/Release/comInterrup_source.exe.mdb
+/Users/apple/Projects/comInterrup_source/comInterrup_source/bin/Release/comInterrup_source.pdb
+/Users/apple/Projects/comInterrup_source/comInterrup_source/obj/x86/Release/comInterrup_source.pdb
