@@ -87,14 +87,19 @@ namespace comInterpt
 
 		static void sendDataToComport(comparedVal cv, string ch_inc, string ch_dec)
 		{
-			string ch_toSend = ch_inc;
-			if (!cv.positive)
+			try
 			{
-				ch_toSend = ch_dec;
-			}
-			for (int c = 0; c < cv.difference; c++)
-			{
-				_serialport.Write(ch_toSend);
+				string ch_toSend = ch_inc;
+				if (!cv.positive)
+				{
+					ch_toSend = ch_dec;
+				}
+				for (int c = 0; c < cv.difference; c++)
+				{
+					_serialport.Write(ch_toSend);
+				}
+			}catch(Exception ex){
+				Console.WriteLine("Could not send data to comport. \nError : " + ex.Message);
 			}
 
 		}
