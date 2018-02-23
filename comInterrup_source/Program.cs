@@ -212,10 +212,10 @@ namespace comInterpt
 
 		static string[] getComport(){
 			string d_comport = "COM2";
-			Console.Write("Enter the comport connected to the machine (default COM2) - press enter to continue - : ");
+			Console.Write("Enter the POSITION comport connected to the machine (default COM2) - press enter to continue - : ");
 			string input = Console.ReadLine().Trim();
 			string i1 = input == "" ? d_comport : input;
-			Console.Write("Enter the comport connected to the machine (default COM1) - press enter to continue - : ");
+			Console.Write("Enter the PRESSURE comport connected to the machine (default COM1) - press enter to continue - : ");
 			input = Console.ReadLine().Trim();
 			d_comport = "COM1";
 			string i2 = input == "" ? d_comport : input;
