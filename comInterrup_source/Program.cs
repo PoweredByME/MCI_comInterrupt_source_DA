@@ -75,13 +75,15 @@ namespace comInterpt
 			public int difference;
 		}
 
-		static comparedVal compareValue(int old_val_index, int new_val){
+		static comparedVal compareValue(int old_val_index, int new_val, string refer = "n"){
 			comparedVal cv = new comparedVal();
+			//Console.WriteLine(refer + " new_val = " + new_val + " | old_val = " + old_coordinates);
 			cv.difference = new_val - old_coordinates[old_val_index];
 			cv.positive = true;
 			if (cv.difference < 0){
 				cv.positive = false;
 			}
+			old_coordinates[old_val_index] = new_val;
 			return cv;
 		}
 
