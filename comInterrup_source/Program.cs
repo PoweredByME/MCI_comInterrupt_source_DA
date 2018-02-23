@@ -90,15 +90,17 @@ namespace comInterpt
 			try
 			{
 				string ch_toSend = ch_inc;
-				Console.WriteLine("CV Value = " + cv.positive.ToString());
+				Console.WriteLine("CV Value ("+ch_inc.ToString()+")= " + cv.positive.ToString());
 				if (!cv.positive)
 				{
 					Console.WriteLine("Negitive CV Value");
 					ch_toSend = ch_dec;
 				}
-				for (int c = 0; c < cv.difference; c++)
+
+				Console.WriteLine("Sending Data " + ch_toSend.ToString());
+				for (int c = 0; c < Math.Abs(cv.difference); c++)
 				{
-					Console.Write("Sending Data " + ch_toSend.ToString());
+					Console.Write(ch_toSend.ToString());
 					_serialport.Write(ch_toSend);
 				}
 			}catch(Exception ex){
