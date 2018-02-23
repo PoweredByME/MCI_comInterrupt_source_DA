@@ -60,14 +60,14 @@ namespace comInterpt
 			comparedVal cv_w = compareValue(oc_W, w);
 			comparedVal cv_lp = compareValue(oc_LP, LP);
 			comparedVal cv_rp = compareValue(oc_RP, RP);
-			sendDataToComport(cv_x, "X", "x");
-            sendDataToComport(cv_y, "Y", "y");
-            sendDataToComport(cv_z, "Z", "z");
-            sendDataToComport(cv_u, "U", "u");
-            sendDataToComport(cv_v, "V", "v");
-            sendDataToComport(cv_w, "W", "w");
-			sendDataToComport(cv_lp, "Q", "q");
-			sendDataToComport(cv_rp, "P", "p");
+			sendDataToComport(cv_x, _serialport, "X", "x");
+            sendDataToComport(cv_y, _serialport, "Y", "y");
+            sendDataToComport(cv_z, _serialport, "Z", "z");
+            sendDataToComport(cv_u, _serialport, "U", "u");
+            sendDataToComport(cv_v, _serialport, "V", "v");
+            sendDataToComport(cv_w, _serialport, "W", "w");
+			sendDataToComport(cv_lp, _p_serialport, "Q", "q");
+			sendDataToComport(cv_rp, _p_serialport, "P", "p");
 		}
 
 		struct comparedVal{
@@ -87,7 +87,7 @@ namespace comInterpt
 			return cv;
 		}
 
-		static void sendDataToComport(comparedVal cv, string ch_inc, string ch_dec)
+		static void sendDataToComport(comparedVal cv, SerialPort serialport, string ch_inc, string ch_dec)
 		{
 			try
 			{
@@ -99,7 +99,7 @@ namespace comInterpt
 				Console.WriteLine("Difference ("+ch_inc+")= " + cv.difference.ToString());
 				for (int c = 0; c < Math.Abs(cv.difference); c++)
 				{
-					_serialport.Write(ch_toSend);
+					serialport.Write(ch_toSend);
 				}
 			}catch(Exception ex){
 				Console.WriteLine("Could not send data to comport. \nError : " + ex.Message);
@@ -119,6 +119,7 @@ namespace comInterpt
 		const string comport_ack = "";   // The ack to be sent when the connection is made.
 
 		static SerialPort _serialport = null;
+		static SerialPort _p_serialport = null;
 		static HttpListener Listener = null;
 		static int RequestNumber = 0;
 		static readonly DateTime StartupDate = DateTime.UtcNow;
@@ -209,27 +210,46 @@ namespace comInterpt
 
 
 
-		static string getComport(){
+		static string[] getComport(){
 			string d_comport = "COM2";
 			Console.Write("Enter the comport connected to the machine (default COM2) - press enter to continue - : ");
 			string input = Console.ReadLine().Trim();
-			return input == "" ? d_comport : input;
+			string i1 = input == "" ? d_comport : input;
+			Console.Write("Enter the comport connected to the machine (default COM1) - press enter to continue - : ");
+			input = Console.ReadLine().Trim();
+			d_comport = "COM1";
+			string i2 = input == "" ? d_comport : input;
+			return new string[] { i1, i2 };
 		}
 
 		static void connectComPort(){
-			string comport = getComport();
-			_serialport = new SerialPort(comport, comport_baudrate, comport_parity, comport_databits, comport_stopbit);
+			string[] comport = getComport();
+			_serialport = new SerialPort(comport[0], comport_baudrate, comport_parity, comport_databits, comport_stopbit);
 			_serialport.Handshake = comport_handshake;
 
+			_p_serialport = new SerialPort(comport[1], comport_baudrate, comport_parity, comport_databits, comport_stopbit);
+			_p_serialport.Handshake = comport_handshake;
+
 			try{
+				
 				_serialport.Open();
 				if(_serialport.IsOpen){
 					_serialport.Write(comport_ack); 	
 				}else{
-					Console.WriteLine(comport + " could not be opened check connection");
+					Console.WriteLine(comport[0] + " could not be opened check connection");
 					Console.ReadLine();
 					return;
 				}
+
+				_p_serialport.Open();
+				if(_p_serialport.IsOpen){
+					_p_serialport.Write(comport_ack); 	
+				}else{
+					Console.WriteLine(comport[1] + " could not be opened check connection");
+					Console.ReadLine();
+					return;
+				}
+
 			}catch (IOException ex)
 			{
 				Console.WriteLine("ComPorts not working! \nError : " + ex.Message + "\nCheck if you HAVE connected the machine correctly to : \n" +
