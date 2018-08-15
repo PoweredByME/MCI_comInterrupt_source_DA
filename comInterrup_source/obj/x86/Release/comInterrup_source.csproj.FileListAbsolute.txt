@@ -1,0 +1,5 @@
+/home/saad/Desktop/HARD_DISK/projects/cSharpProjects/MCI/MCI_comInterrupt_source_DA/comInterrup_source/bin/Release/comInterrup_source.exe
+/home/saad/Desktop/HARD_DISK/projects/cSharpProjects/MCI/MCI_comInterrupt_source_DA/comInterrup_source/bin/Release/comInterrup_source.pdb
+/home/saad/Desktop/HARD_DISK/projects/cSharpProjects/MCI/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.csproj.CoreCompileInputs.cache
+/home/saad/Desktop/HARD_DISK/projects/cSharpProjects/MCI/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.exe
+/home/saad/Desktop/HARD_DISK/projects/cSharpProjects/MCI/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.pdb
