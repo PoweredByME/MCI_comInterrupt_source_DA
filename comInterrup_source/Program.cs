@@ -89,6 +89,7 @@ namespace comInterpt
 
 		static void sendDataToComport(comparedVal cv, SerialPort serialport, string ch_inc, string ch_dec)
 		{
+            int charSendDelayMS = 1;
 			try
 			{
 				string ch_toSend = ch_inc;
@@ -98,9 +99,10 @@ namespace comInterpt
 				}
 				Console.WriteLine("Difference ("+ch_inc+")= " + cv.difference.ToString());
 				for (int c = 0; c < Math.Abs(cv.difference); c++)
-				{
+                {
 					serialport.Write(ch_toSend);
-				}
+                    Thread.Sleep(charSendDelayMS);
+                }
 			}catch(Exception ex){
 				Console.WriteLine("Could not send data to comport. \nError : " + ex.Message);
 			}
