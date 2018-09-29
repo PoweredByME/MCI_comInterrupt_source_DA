@@ -3,3 +3,9 @@
 /home/saad/Desktop/HARD_DISK/projects/cSharpProjects/MCI/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.csproj.CoreCompileInputs.cache
 /home/saad/Desktop/HARD_DISK/projects/cSharpProjects/MCI/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.exe
 /home/saad/Desktop/HARD_DISK/projects/cSharpProjects/MCI/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.pdb
+/Volumes/My Passport/Saad Ahmad MAC/Projects/CSharpProjects/MCI_comInterrupt_source_DA/comInterrup_source/bin/Release/comInterrup_source.exe
+/Volumes/My Passport/Saad Ahmad MAC/Projects/CSharpProjects/MCI_comInterrupt_source_DA/comInterrup_source/bin/Release/comInterrup_source.pdb
+/Volumes/My Passport/Saad Ahmad MAC/Projects/CSharpProjects/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.csprojAssemblyReference.cache
+/Volumes/My Passport/Saad Ahmad MAC/Projects/CSharpProjects/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.csproj.CoreCompileInputs.cache
+/Volumes/My Passport/Saad Ahmad MAC/Projects/CSharpProjects/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.exe
+/Volumes/My Passport/Saad Ahmad MAC/Projects/CSharpProjects/MCI_comInterrupt_source_DA/comInterrup_source/obj/x86/Release/comInterrup_source.pdb

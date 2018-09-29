@@ -42,8 +42,10 @@ namespace comInterpt
 		/// <param name="v">The v coordinate.</param>
 		/// <param name="w">The w coordinate.</param>
 
-		public static void onRecieveCtrlData(int x, int y, int z, int u, int v, int w, int LP, int RP){   // LP = left pressure, RP = right pressure
-			Console.WriteLine ("X = " + x.ToString ());
+		public static void onRecieveCtrlData(int x, int y, int z, int u, int v, int w, int LP, int RP, int POS_S, int PRES_S){   // LP = left pressure, RP = right pressure
+            string pos_s = resolveSensitivityParameter(POS_S);
+            string pres_s = resolveSensitivityParameter(PRES_S);
+            Console.WriteLine ("X = " + x.ToString ());
 			Console.WriteLine ("Y = " + y.ToString ());
 			Console.WriteLine ("Z = " + z.ToString ());
 			Console.WriteLine ("U = " + u.ToString ());
@@ -51,6 +53,8 @@ namespace comInterpt
 			Console.WriteLine ("W = " + w.ToString ());
 			Console.WriteLine ("LP = " + LP.ToString ());
 			Console.WriteLine ("RP = " + RP.ToString ());
+            Console.WriteLine("POS_S = " + pos_s);
+            Console.WriteLine("PRES_S = " + pres_s);
 			Console.WriteLine("Sending data to machine...");
 			comparedVal cv_x = compareValue(oc_X, x);
 			comparedVal cv_y = compareValue(oc_Y, y);
@@ -68,8 +72,26 @@ namespace comInterpt
             sendDataToComport(cv_w, _serialport, "W", "w");
 			sendDataToComport(cv_lp, _p_serialport, "Q", "q");
 			sendDataToComport(cv_rp, _p_serialport, "P", "p");
-		}
+            int charSendDelayMS = 1;
+            try
+            {
+                _serialport.Write(pos_s);
+                Thread.Sleep(charSendDelayMS);
+                _p_serialport.Write(pres_s);
+                Thread.Sleep(charSendDelayMS);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Could not send data to comport. \nError : " + ex.Message);
+            }
+        }
 
+
+        public static string resolveSensitivityParameter(int param){
+            // Convert the received sensitivity signal to a meaningfull response for the
+            // concerned machine
+            return param == 1 ? "G" : param == 2 ? "J" : param == 3 ? "K" : param == 4 ? "M" : param == 5 ? "I" : "";
+        }
 		struct comparedVal{
 			public bool positive;
 			public int difference;
@@ -189,7 +211,9 @@ namespace comInterpt
 								int.Parse(tarr[4]),
 								int.Parse(tarr[5]),
 								int.Parse(tarr[6]),
-								int.Parse(tarr[7])
+								int.Parse(tarr[7]),
+                                int.Parse(tarr[8]),
+                                int.Parse(tarr[9])
 							);
 						}
 					}
